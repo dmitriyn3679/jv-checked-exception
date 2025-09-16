@@ -5,6 +5,12 @@ public class PasswordValidator {
 
     public void validate(String password, String repeatPassword)
             throws PasswordValidationException {
+        if (password == null || repeatPassword == null) {
+            throw new PasswordValidationException(
+                    "Password and repeat password must not be null"
+            );
+        }
+
         boolean isPasswordEquals = password.equals(repeatPassword);
 
         if (!isPasswordEquals || password.length() < MIN_LENGTH) {
